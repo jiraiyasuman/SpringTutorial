@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student</title>
+<!-- bootstrap files -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<!-- customised css files -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div align="center">
+<center><h1>Student form</h1></center>
+<form th:action="@{/submit}" th:object="${Student}" method="POST">
+First Name: <input type="text" th:field="*{firstName}"/><br>
+Last Name: <input type="text" th:field="*{lastName}"/><br>
+<select th:field="*{countries}">
+
+        <option th:each="temp : ${country}" th:value="${temp}" th:text="${temp}" />
+
+    </select><br>
+    Favorite Programming Language:
+
+    <input type="radio" th:field="*{languages}" th:value="Go">Go</input>
+    <input type="radio" th:field="*{languages}" th:value="Java">Java</input>
+    <input type="radio" th:field="*{languages}" th:value="Python">Python</input>
+
+    <br><br>
+     Favorite Operating Systems:
+
+    <input type="checkbox" th:field="*{oS}" th:value="Linux">Linux</input>
+    <input type="checkbox" th:field="*{oS}" th:value="macOS">macOS</input>
+    <input type="checkbox" th:field="*{oS}"
+                           th:value="'Microsoft Windows'">Microsoft Windows</input>
+
+    <br><br>
+    
+<input type="submit">
+</form>
+</div>
+</body>
+</html>
